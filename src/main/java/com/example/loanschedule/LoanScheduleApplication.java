@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,10 +60,14 @@ class Payment {
 
   public Payment(int month, double annuityPayment, double principal, double interest, double balance) {
     this.month = month;
-    this.annuityPayment = annuityPayment;
-    this.principal = principal;
-    this.interest = interest;
-    this.balance = balance;
+    this.annuityPayment = round(annuityPayment);
+    this.principal = round(principal);
+    this.interest = round(interest);
+    this.balance = round(balance);
+  }
+
+  private double round(double value) {
+    return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 
   public int getMonth() {
