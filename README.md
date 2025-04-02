@@ -1,4 +1,4 @@
-# Loan Schedule API - HELP.md
+# Loan Schedule API - README.md
 
 ## Overview
 This Spring Boot application calculates a loan schedule using annuity payments. It provides a REST API that returns a payment schedule based on the loan amount, interest rate, and loan term.
